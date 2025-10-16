@@ -1,5 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { projects } from "../../constants";
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "100px" }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className="relative">
+      {!isInView && (
+        <div className={`${className} bg-gray-700 animate-pulse`}></div>
+      )}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
+        />
+      )}
+    </div>
+  );
+};
 
 const Work = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -36,7 +82,7 @@ const Work = () => {
             className="border border-white bg-gray-900 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden cursor-pointer hover:shadow-purple-500/50 hover:-translate-y-2 transition-transform duration-300"
           >
             <div className="p-4">
-              <img
+              <LazyImage
                 src={project.image}
                 alt={project.title}
                 className="w-full h-48 object-cover rounded-xl"
@@ -83,6 +129,7 @@ const Work = () => {
                   src={selectedProject.image}
                   alt={selectedProject.title}
                   className="lg:w-full w-[95%] object-contain rounded-xl shadow-2xl"
+                  loading="eager"
                 />
               </div>
               <div className="lg:p-8 p-6">

@@ -1,5 +1,50 @@
-import React from "react";
-import { experiences } from "../../constants"; // Import your data
+import React, { useState, useEffect, useRef } from "react";
+import { experiences } from "../../constants";
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={className}>
+      {isInView ? (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
+        />
+      ) : (
+        <div className={`${className} bg-gray-700 animate-pulse`}></div>
+      )}
+    </div>
+  );
+};
 
 const Experience = () => {
   return (
@@ -32,7 +77,7 @@ const Experience = () => {
           >
             {/* Timeline Circle */}
             <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
-              <img
+              <LazyImage
                 src={experience.img}
                 alt={experience.company}
                 className="w-full h-full object-cover rounded-full"
@@ -49,7 +94,7 @@ const Experience = () => {
               <div className="flex items-center space-x-6">
                 {/* Company Logo/Image */}
                 <div className="w-16 h-16 bg-white rounded-md overflow-hidden">
-                  <img
+                  <LazyImage
                     src={experience.img}
                     alt={experience.company}
                     className="w-full h-full object-cover"
@@ -67,7 +112,9 @@ const Experience = () => {
                     </h4>
                   </div>
                   {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{experience.date}</p>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {experience.date}
+                  </p>
                 </div>
               </div>
 

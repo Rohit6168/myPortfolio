@@ -1,5 +1,50 @@
-import React from "react";
-import { education } from "../../constants"; // Import the education data
+import React, { useState, useEffect, useRef } from "react";
+import { education } from "../../constants";
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={className}>
+      {isInView ? (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
+        />
+      ) : (
+        <div className={`${className} bg-gray-700 animate-pulse`}></div>
+      )}
+    </div>
+  );
+};
 
 const Education = () => {
   return (
@@ -12,7 +57,8 @@ const Education = () => {
         <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
         <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My education has been a journey of learning and development. Here are the details of my academic background
+          My education has been a journey of learning and development. Here are
+          the details of my academic background
         </p>
       </div>
 
@@ -31,7 +77,7 @@ const Education = () => {
           >
             {/* Timeline Circle */}
             <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
-              <img
+              <LazyImage
                 src={edu.img}
                 alt={edu.school}
                 className="w-full h-full object-cover rounded-full"
@@ -48,7 +94,7 @@ const Education = () => {
               <div className="flex items-center space-x-6">
                 {/* School Logo/Image */}
                 <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
-                  <img
+                  <LazyImage
                     src={edu.img}
                     alt={edu.school}
                     className="w-full h-full object-cover"
@@ -70,7 +116,9 @@ const Education = () => {
                 </div>
               </div>
 
-              <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
+              <p className="mt-4 text-gray-400 font-bold">
+                Grade: {edu.grade}
+              </p>
               <p className="mt-4 text-gray-400">{edu.desc}</p>
             </div>
           </div>

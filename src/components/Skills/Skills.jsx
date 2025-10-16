@@ -1,7 +1,52 @@
 // src/components/Skills/Skills.jsx
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { SkillsInfo } from "../../constants";
 import Tilt from "react-parallax-tilt";
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "50px" }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={imgRef} className={className}>
+      {isInView ? (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          onLoad={() => setIsLoaded(true)}
+          loading="lazy"
+        />
+      ) : (
+        <div className={`${className} bg-gray-700 animate-pulse`}></div>
+      )}
+    </div>
+  );
+};
 
 const Skills = () => (
   <section
@@ -13,7 +58,8 @@ const Skills = () => (
       <h2 className="text-3xl sm:text-4xl font-bold text-white">SKILLS</h2>
       <div className="w-24 h-1 bg-[#8245ec] mx-auto mt-2"></div>
       <p className="text-gray-400 mt-4 text-lg font-semibold">
-      A collection of my technical skills and expertise honed through various projects and experiences
+        A collection of my technical skills and expertise honed through various
+        projects and experiences
       </p>
     </div>
 
@@ -45,7 +91,7 @@ const Skills = () => (
                   key={skill.name}
                   className="flex items-center justify-center space-x-2 bg-transparent border-2 border-gray-700 rounded-3xl py-2 px-2 sm:py-2 sm:px-2 text-center"
                 >
-                  <img
+                  <LazyImage
                     src={skill.logo}
                     alt={`${skill.name} logo`}
                     className="w-6 h-6 sm:w-8 sm:h-8"
