@@ -55,6 +55,8 @@ import webverLogo from './assets/work_logo/web_dig.png';
 import cmLogo from './assets/work_logo/cm.png';
 import imagesearchLogo from './assets/work_logo/image_search.png';
 import removebgLogo from './assets/work_logo/remove_bg.png';
+import rohitxchange from './assets/work_logo/rohitxchange.png';
+import moneymanager from './assets/work_logo/moneymanager.png';
 
 
 export const SkillsInfo = [
@@ -192,8 +194,28 @@ export const SkillsInfo = [
       github: "https://github.com/Rohit6168/AR-CART",
       webapp: "https://arcart.vercel.app/",
     },
+     {
+    id: 1,
+    title: "RohitXchange - Cryptocurrency Trading Platform",
+    description:
+      "A full-stack cryptocurrency exchange platform featuring real-time market data, secure wallet management, and AI-powered chatbot assistance. Users can trade 50+ cryptocurrencies, manage digital wallets, and make secure transactions through integrated Razorpay and Stripe payment gateways. Includes JWT authentication, OTP email verification, and interactive price charts with multiple timeframes.",
+    image: rohitxchange, // Import your image
+    tags: ["React", "Spring Boot", "MySQL", "JWT", "Razorpay", "Stripe", "Recharts", "Tailwind CSS"],
+    github: "https://github.com/Rohit6168/RohitXchangeFrontend",
+    webapp: "https://rohit-xchange-frontend.vercel.app/",
+  },
+  {
+    id: 2,
+    title: "Money Manager - Personal Finance Tracker",
+    description:
+      "A comprehensive personal finance management application that helps users track income, expenses, and maintain financial health. Features email verification with Cloudinary image upload, customizable categories with emoji icons, interactive charts for financial visualization, advanced filtering options, and Excel export functionality. Built with React and Vite for optimal performance and Spring Boot backend for robust API services.",
+    image: moneymanager, // Import your image
+    tags: ["React", "Vite", "Spring Boot", "MySQL", "Cloudinary", "Recharts", "Tailwind CSS"],
+    github: "https://github.com/Rohit6168/money-manager-forntend",
+    webapp: "https://moneymanagerfrontendd.netlify.app/",
+  },
     {
-      id: 1,
+      id: 3,
       title: "GitHub Profile Detective",
       description:
         "A powerful and user-friendly React.js application designed to uncover and showcase detailed GitHub profile information. Simply enter a GitHub username, and the app fetches comprehensive data, including profile stats, repositories, followers, and contributions. The intuitive interface ensures a seamless experience, making it a must-visit tool for developers and recruiters.",
@@ -203,7 +225,7 @@ export const SkillsInfo = [
       webapp: "https://githubprofiledetective.netlify.app/",
     },
     {
-      id: 2,
+      id: 4,
       title: "CS Prep",
       description:
         "A full-stack quiz-based platform designed for GATE/UGC NET students to practice previous year questions and create customized tests. The platform offers comprehensive profile stats and detailed results, helping students track and improve their preparation journey effectively.",
@@ -213,7 +235,7 @@ export const SkillsInfo = [
       webapp: "https://csprep.netlify.app/",
     },
     {
-      id: 3,
+      id: 5,
       title: "Movie Recommendation App",
       description:
         "A React-based web application that provides movie recommendations based on different criteria, such as genres, user preferences, and popular trends. The intuitive design and smooth experience make it a go-to app for movie enthusiasts.",
@@ -223,7 +245,7 @@ export const SkillsInfo = [
       webapp: "https://movie-recommendation-app-jet.vercel.app/",
     },
     {
-      id: 4,
+      id: 6,
       title: "Email Validator NPM Package",
       description:
         "An efficient and customizable NPM package for validating email addresses. Built using React.js and Node.js, it provides robust validation features to help developers ensure that email inputs meet required formats and standards.",
@@ -233,7 +255,7 @@ export const SkillsInfo = [
       webapp: "https://www.npmjs.com/package/cmtk-email-validator",
     },
     {
-      id: 5,
+      id: 7,
       title: "Task Reminder Chrome Extension Tool",
       description:
         "A productivity-boosting Chrome extension designed to help users manage and remember their daily tasks. Built using JavaScript, it offers a simple interface with reminders and task notifications to keep users on track.",
@@ -243,7 +265,7 @@ export const SkillsInfo = [
       webapp: "chrome://extensions/?id=kngheeibjnnidhfoomkpnbeghackheci",
     },
     {
-      id: 6,
+      id: 8,
       title: "Webverse Digital",
       description:
         "The official website for Webverse Digital, a creative digital marketing agency. Built using HTML, CSS, and JavaScript, it features visually appealing animations and a clean design to showcase the agency's services.",
@@ -253,7 +275,7 @@ export const SkillsInfo = [
       webapp: "https://webversedigital.com/",
     },
     {
-      id: 7,
+      id: 9,
       title: "Coding Master",
       description:
         "An ed-tech platform where users can access tech and coding-related blogs, notes, interview questions, e-books, and premium content with payment integration. Built with full-stack technologies for a seamless learning experience.",
@@ -263,7 +285,7 @@ export const SkillsInfo = [
       webapp: "https://codingmasterweb.in/",
     },
     {
-      id: 8,
+      id: 10,
       title: "Image Search App",
       description:
         "A React.js-based image search application that allows users to search and download high-quality images from the web. Built using external APIs to ensure a vast library of results for various queries.",
@@ -273,7 +295,7 @@ export const SkillsInfo = [
       webapp: "https://imagsearch.netlify.app/",
     },
     {
-      id: 9,
+      id: 11,
       title: "Image Background Remover",
       description:
         "An efficient background removal app built with React.js and API integration. Users can upload any image, remove the background, and download the transparent version for further use.",
