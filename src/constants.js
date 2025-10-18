@@ -45,6 +45,7 @@ import dipLogo from './assets/education_logo/dip_logo.png';   // reuse existing
 import sscLogo from './assets/education_logo/ssc_logo.png';   // reuse existing
 
 // Project Section Logo's
+import arcart from './assets/work_logo/arcart.png';
 import githubdetLogo from './assets/work_logo/github_det.png';
 import csprepLogo from './assets/work_logo/cs_prep.png';
 import movierecLogo from './assets/work_logo/movie_rec.png';
@@ -183,6 +184,16 @@ export const SkillsInfo = [
   export const projects = [
     {
       id: 0,
+      title: "AR-CART Augmented Reality Shopping App",
+      description:
+        "AR-CART transforms online shopping with Augmented Reality. Visualize furniture in your living room, try out décor items, and explore products in 3D before buying. Built with Flutter for a seamless cross-platform experience.",
+      image: arcart,
+      tags: ["Flutter","Dart", "ARCore", "ARKit", "Firebase", "API"],   
+      github: "https://github.com/Rohit6168/AR-CART",
+      webapp: "https://arcart.vercel.app/",
+    },
+    {
+      id: 1,
       title: "GitHub Profile Detective",
       description:
         "A powerful and user-friendly React.js application designed to uncover and showcase detailed GitHub profile information. Simply enter a GitHub username, and the app fetches comprehensive data, including profile stats, repositories, followers, and contributions. The intuitive interface ensures a seamless experience, making it a must-visit tool for developers and recruiters.",
@@ -192,7 +203,7 @@ export const SkillsInfo = [
       webapp: "https://githubprofiledetective.netlify.app/",
     },
     {
-      id: 1,
+      id: 2,
       title: "CS Prep",
       description:
         "A full-stack quiz-based platform designed for GATE/UGC NET students to practice previous year questions and create customized tests. The platform offers comprehensive profile stats and detailed results, helping students track and improve their preparation journey effectively.",
@@ -202,7 +213,7 @@ export const SkillsInfo = [
       webapp: "https://csprep.netlify.app/",
     },
     {
-      id: 2,
+      id: 3,
       title: "Movie Recommendation App",
       description:
         "A React-based web application that provides movie recommendations based on different criteria, such as genres, user preferences, and popular trends. The intuitive design and smooth experience make it a go-to app for movie enthusiasts.",
@@ -212,7 +223,7 @@ export const SkillsInfo = [
       webapp: "https://movie-recommendation-app-jet.vercel.app/",
     },
     {
-      id: 3,
+      id: 4,
       title: "Email Validator NPM Package",
       description:
         "An efficient and customizable NPM package for validating email addresses. Built using React.js and Node.js, it provides robust validation features to help developers ensure that email inputs meet required formats and standards.",
@@ -222,7 +233,7 @@ export const SkillsInfo = [
       webapp: "https://www.npmjs.com/package/cmtk-email-validator",
     },
     {
-      id: 4,
+      id: 5,
       title: "Task Reminder Chrome Extension Tool",
       description:
         "A productivity-boosting Chrome extension designed to help users manage and remember their daily tasks. Built using JavaScript, it offers a simple interface with reminders and task notifications to keep users on track.",
@@ -232,7 +243,7 @@ export const SkillsInfo = [
       webapp: "chrome://extensions/?id=kngheeibjnnidhfoomkpnbeghackheci",
     },
     {
-      id: 5,
+      id: 6,
       title: "Webverse Digital",
       description:
         "The official website for Webverse Digital, a creative digital marketing agency. Built using HTML, CSS, and JavaScript, it features visually appealing animations and a clean design to showcase the agency's services.",
@@ -242,7 +253,7 @@ export const SkillsInfo = [
       webapp: "https://webversedigital.com/",
     },
     {
-      id: 6,
+      id: 7,
       title: "Coding Master",
       description:
         "An ed-tech platform where users can access tech and coding-related blogs, notes, interview questions, e-books, and premium content with payment integration. Built with full-stack technologies for a seamless learning experience.",
@@ -252,7 +263,7 @@ export const SkillsInfo = [
       webapp: "https://codingmasterweb.in/",
     },
     {
-      id: 7,
+      id: 8,
       title: "Image Search App",
       description:
         "A React.js-based image search application that allows users to search and download high-quality images from the web. Built using external APIs to ensure a vast library of results for various queries.",
@@ -262,7 +273,7 @@ export const SkillsInfo = [
       webapp: "https://imagsearch.netlify.app/",
     },
     {
-      id: 8,
+      id: 9,
       title: "Image Background Remover",
       description:
         "An efficient background removal app built with React.js and API integration. Users can upload any image, remove the background, and download the transparent version for further use.",
